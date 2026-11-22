@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Аружан Flowers — доставка цветов</title>
-  <meta name="description" content="Аружан Flowers — красивые букеты с доставкой. Закажите в WhatsApp.">
+  <meta name="description" content="Аружан Flowers — красивые букеты, мишки и шары. Самовывоз и курьер. Заказ в WhatsApp.">
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <meta property="og:title" content="Аружан Flowers — доставка цветов">
-  <meta property="og:description" content="Букеты, мишки и шары. Самовывоз и курьер.">
+  <meta property="og:description" content="Аружан Flowers — красивые букеты, мишки и шары. Самовывоз и курьер. Заказ в WhatsApp.">
   <meta property="og:image" content="images/og.jpg">
   <meta property="og:type" content="website">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,38 +16,37 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
-
-  <header class="header">
-    <a href="#home" class="logo"><img class="logo-ava" src="images/ava.jpg" alt="">Аружан <span>Flowers</span></a>
-    <nav class="nav">
-      <a href="#home">Главная</a>
-      <a href="#video">Видео</a>
-      <a href="#catalog">Каталог</a>
-      <a href="#delivery">Доставка</a>
-    </nav>
-    <button class="cart-btn" id="cartOpen" aria-label="Открыть корзину">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 7h12l-1 13H7L6 7z"/><path d="M9 7V5a3 3 0 0 1 6 0v2"/></svg>
-      <span class="cart-count" id="cartCount">0</span>
-    </button>
-  </header>
-
+<body data-page="home">
+<!-- Шапка, подвал и корзина вставляются из script.js -->
   <main>
-    <!-- Главная -->
-    <section class="hero" id="home">
+    <section class="hero">
       <div class="hero-text">
         <p class="hero-sub">Цветочный магазин</p>
         <h1>Аружан <span>Flowers</span></h1>
         <p class="hero-desc">Нежные букеты из свежих цветов для любимых. Соберём с любовью и доставим вовремя.</p>
-        <a href="#catalog" class="btn">Выбрать букет</a>
+        <div class="hero-btns">
+          <a href="catalog.html" class="btn">Выбрать букет</a>
+          <a href="delivery.html" class="btn btn-ghost">Доставка</a>
+        </div>
       </div>
       <div class="hero-img">
         <img src="images/hero-red.jpg" alt="Красный букет роз">
       </div>
     </section>
 
-    <!-- Видео -->
-    <section class="promo" id="video">
+    <section class="catalog">
+      <h2>Популярное</h2>
+      <div class="grid grid-4" id="popular"></div>
+      <div class="center"><a href="catalog.html" class="btn btn-ghost">Весь каталог →</a></div>
+    </section>
+
+    <section class="cats">
+      <a href="catalog.html?cat=flowers" class="cat-tile"><img src="images/b2.jpg" alt=""><span>Букеты</span></a>
+      <a href="catalog.html?cat=bears" class="cat-tile"><img src="images/bear-hearts.jpg" alt=""><span>Мишки</span></a>
+      <a href="catalog.html?cat=balloons" class="cat-tile"><img src="images/balloons-pink.jpg" alt=""><span>Шары</span></a>
+    </section>
+
+    <section class="promo">
       <h2>Наша реклама</h2>
       <div class="promo-video">
         <video controls playsinline preload="metadata" poster="images/reklama-poster.jpg">
@@ -56,72 +55,7 @@
         </video>
       </div>
     </section>
-
-    <!-- Каталог -->
-    <section class="catalog" id="catalog">
-      <h2>Каталог букетов</h2>
-      <div class="grid" id="products"></div>
-    </section>
-
-    <!-- Доставка -->
-    <section class="delivery" id="delivery">
-      <h2>Доставка</h2>
-      <div class="delivery-grid">
-        <button type="button" class="delivery-card" data-delivery="pickup" aria-pressed="false">
-          <h3>Самовывоз</h3>
-          <p>Заберите готовый заказ сами. Мы заранее соберём и упакуем его.</p>
-          <span class="delivery-mark">Выбрать</span>
-        </button>
-        <button type="button" class="delivery-card" data-delivery="courier" aria-pressed="false">
-          <h3>Курьер</h3>
-          <p>Курьер привезёт букет, мишек или шары по вашему адресу.</p>
-          <span class="delivery-mark">Выбрать</span>
-        </button>
-      </div>
-      <div class="delivery-confirm" id="deliveryConfirm" hidden>
-        <p class="delivery-confirm-text" id="deliveryConfirmText"></p>
-        <p class="delivery-confirm-sub" id="deliveryConfirmSub"></p>
-        <label class="delivery-address" id="deliveryAddressWrap" hidden>
-          <span>Укажите свой адрес доставки</span>
-          <input type="text" id="addressInput2" placeholder="Город, улица, дом, квартира">
-        </label>
-      </div>
-    </section>
   </main>
-
-  <footer class="footer">
-    <p class="logo">Аружан <span>Flowers</span></p>
-    <p>© 2026 Аружан Flowers</p>
-  </footer>
-
-  <!-- Корзина -->
-  <div class="overlay" id="overlay"></div>
-  <aside class="cart" id="cart" aria-label="Корзина">
-    <div class="cart-head">
-      <h3>Корзина</h3>
-      <button class="cart-close" id="cartClose" aria-label="Закрыть">&times;</button>
-    </div>
-    <div class="cart-items" id="cartItems"></div>
-    <div class="cart-foot">
-      <div class="cart-delivery">
-        <p class="cart-delivery-title">Как получить заказ?</p>
-        <div class="cart-delivery-btns">
-          <button type="button" data-delivery="pickup" aria-pressed="false">Самовывоз</button>
-          <button type="button" data-delivery="courier" aria-pressed="false">Курьер</button>
-        </div>
-        <input type="text" id="addressInput" class="cart-address" placeholder="Адрес доставки" hidden>
-        <p class="cart-delivery-hint" id="deliveryHint" hidden></p>
-      </div>
-      <div class="cart-total">
-        <span>Итого:</span>
-        <strong id="cartTotal">0 ₸</strong>
-      </div>
-      <button class="btn btn-wa" id="orderBtn">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.6-.4zM12 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4C2.7 15.6 2.2 13.8 2.2 12 2.2 6.6 6.6 2.2 12 2.2c2.6 0 5.1 1 6.9 2.9 1.8 1.8 2.9 4.3 2.9 6.9 0 5.4-4.4 9.8-9.8 9.8zM20.5 3.5C18.2 1.2 15.2 0 12 0 5.4 0 0 5.4 0 12c0 2.1.6 4.2 1.6 6L0 24l6.2-1.6c1.8 1 3.8 1.5 5.8 1.5 6.6 0 12-5.4 12-12 0-3.2-1.2-6.2-3.5-8.4z"/></svg>
-        Заказать в WhatsApp
-      </button>
-    </div>
-  </aside>
 
   <script src="script.js"></script>
 </body>

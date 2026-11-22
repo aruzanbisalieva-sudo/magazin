@@ -374,3 +374,120 @@ body.cart-open { overflow: hidden; }
   font: inherit; font-size: 1rem; color: var(--text); background: var(--pink-50);
 }
 .delivery-address input:focus { outline: none; border-color: var(--pink-600); }
+
+/* ===== Многостраничная версия ===== */
+.nav a.active { color: var(--pink-600); box-shadow: inset 0 -2px 0 var(--pink-600); }
+
+/* Меню на телефоне — строка под шапкой */
+.nav-mobile { display: none; }
+@media (max-width: 640px) {
+  .nav-mobile {
+    display: flex; gap: 6px; overflow-x: auto; padding: 10px 12px;
+    position: sticky; top: 70px; z-index: 9;
+    background: rgba(255, 246, 248, 0.95); border-bottom: 1px solid var(--pink-200);
+  }
+  .nav-mobile a {
+    flex: 0 0 auto; padding: 7px 11px; border-radius: 999px;
+    background: var(--white); font-weight: 500; font-size: .84rem;
+  }
+  .nav-mobile a.active { background: var(--pink-600); color: var(--white); }
+}
+
+.page-top { padding-top: 50px; }
+.page-title {
+  font-family: "Cormorant Garamond", serif; font-weight: 600;
+  font-size: clamp(2.3rem, 5vw, 3.4rem); color: var(--pink-600);
+  text-align: center; margin-bottom: 28px;
+}
+.center { text-align: center; margin-top: 36px; }
+.hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+.btn-ghost { background: var(--white); color: var(--pink-600); box-shadow: var(--shadow); }
+.btn-ghost:hover { background: var(--pink-100); }
+@media (max-width: 640px) { .hero-btns { justify-content: center; } }
+
+/* Карточки */
+.card-img { display: block; overflow: hidden; }
+.card-img img { transition: transform .4s; }
+.card:hover .card-img img { transform: scale(1.04); }
+.card h3 a:hover { color: var(--pink-600); }
+.card-cat { font-size: .72rem; text-transform: uppercase; letter-spacing: 2px; color: var(--pink-400); font-weight: 600; }
+.grid-4 { grid-template-columns: repeat(4, 1fr); }
+@media (max-width: 1000px) { .grid-4 { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px) { .grid-4 { grid-template-columns: 1fr; } }
+
+/* Плитки категорий */
+.cats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 1150px; margin: 0 auto; padding: 10px 5% 40px; }
+.cat-tile { position: relative; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); aspect-ratio: 4 / 3; }
+.cat-tile img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
+.cat-tile:hover img { transform: scale(1.05); }
+.cat-tile span {
+  position: absolute; left: 0; right: 0; bottom: 0; padding: 40px 20px 16px;
+  background: linear-gradient(transparent, rgba(74, 54, 64, .65));
+  color: var(--white); font-family: "Cormorant Garamond", serif; font-size: 1.8rem; font-weight: 600;
+}
+@media (max-width: 640px) { .cats { grid-template-columns: 1fr; padding: 0 16px 30px; } }
+
+/* Фильтры каталога */
+.filters { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-bottom: 34px; }
+.filter {
+  padding: 9px 18px; border-radius: 999px; background: var(--white);
+  border: 2px solid var(--pink-200); font-weight: 600; font-size: .92rem;
+}
+.filter span { color: var(--muted); font-weight: 500; margin-left: 4px; }
+.filter.active { background: var(--pink-600); border-color: var(--pink-600); color: var(--white); }
+.filter.active span { color: var(--pink-100); }
+
+/* Страница товара */
+.product-page { padding: 40px 5% 20px; max-width: 1150px; margin: 0 auto; }
+.crumbs { font-size: .88rem; color: var(--muted); margin-bottom: 24px; }
+.crumbs a:hover { color: var(--pink-600); }
+.product { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+.product-img img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: var(--radius); box-shadow: var(--shadow); }
+.product-info h1 { font-family: "Cormorant Garamond", serif; font-size: clamp(2.2rem, 4vw, 3.2rem); line-height: 1.1; color: var(--pink-600); margin: 6px 0 14px; }
+.product-desc { color: var(--muted); font-size: 1.05rem; margin-bottom: 20px; }
+.product-price { font-size: 1.8rem; font-weight: 600; color: var(--pink-600); margin-bottom: 22px; }
+.product-buy { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; margin-bottom: 18px; }
+.qty-lg { margin: 0; gap: 14px; background: var(--white); padding: 8px 12px; border-radius: 40px; box-shadow: var(--shadow); }
+.qty-lg button { width: 34px; height: 34px; font-size: 1.1rem; }
+.qty-lg span { min-width: 20px; text-align: center; font-weight: 600; }
+.product-wa { display: inline-block; color: #1a9e4b; font-weight: 600; margin-bottom: 20px; }
+.product-wa:hover { text-decoration: underline; }
+.product-notes { list-style: none; border-top: 1px solid var(--pink-200); padding-top: 16px; color: var(--muted); font-size: .95rem; }
+.product-notes li { padding: 4px 0 4px 22px; position: relative; }
+.product-notes li::before { content: "✿"; position: absolute; left: 0; color: var(--pink-400); }
+.product-notes a { color: var(--pink-600); text-decoration: underline; }
+.not-found { text-align: center; padding: 40px 0; }
+.not-found h1 { font-family: "Cormorant Garamond", serif; font-size: 2.4rem; color: var(--pink-600); }
+.not-found p { color: var(--muted); margin: 8px 0 24px; }
+.related { padding-top: 40px; }
+@media (max-width: 760px) { .product { grid-template-columns: 1fr; gap: 24px; } }
+
+/* Как заказать */
+.steps { padding: 20px 5% 70px; text-align: center; }
+.steps h2 { font-family: "Cormorant Garamond", serif; font-weight: 600; font-size: clamp(2rem, 4vw, 2.8rem); color: var(--pink-600); margin-bottom: 28px; }
+.steps-list { list-style: none; display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; max-width: 1000px; margin: 0 auto; }
+.steps-list li { background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow); padding: 24px 18px; }
+.steps-list b { display: inline-grid; place-items: center; width: 38px; height: 38px; border-radius: 50%; background: var(--pink-100); color: var(--pink-600); margin-bottom: 10px; }
+.steps-list h3 { font-family: "Cormorant Garamond", serif; font-size: 1.4rem; color: var(--pink-600); }
+.steps-list p { color: var(--muted); font-size: .92rem; }
+.steps-list a { color: var(--pink-600); text-decoration: underline; }
+@media (max-width: 900px) { .steps-list { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 500px) { .steps-list { grid-template-columns: 1fr; } }
+
+/* Контакты */
+.contacts { padding: 50px 5% 70px; }
+.contacts-card { max-width: 520px; margin: 0 auto; background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow); padding: 32px 28px; text-align: center; }
+.contacts-ava { width: 90px; height: 90px; border-radius: 50%; object-fit: cover; margin: 0 auto 14px; box-shadow: var(--shadow); }
+.contacts-lead { color: var(--muted); margin-bottom: 20px; }
+.contacts-list { text-align: left; margin-bottom: 24px; }
+.contact-row { display: flex; justify-content: space-between; gap: 16px; padding: 12px 0; border-bottom: 1px solid var(--pink-100); }
+.contact-row span { color: var(--muted); }
+.contact-row a { color: var(--pink-600); }
+.contacts-card .btn-wa { width: 100%; }
+
+/* Подвал */
+.footer p { margin-top: 6px; }
+.footer-nav { display: flex; justify-content: center; flex-wrap: wrap; gap: 18px; margin: 12px 0; font-weight: 500; color: var(--text); }
+.footer-nav a:hover, .footer-wa:hover { color: var(--pink-600); }
+.footer-wa { color: #1a9e4b; font-weight: 600; }
+.cart-empty a { color: var(--pink-600); text-decoration: underline; font-weight: 600; }
