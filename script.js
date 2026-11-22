@@ -6,12 +6,13 @@ const products = [
   { id: 1, name: "Розовые тюльпаны", desc: "15 махровых тюльпанов в нежной ленте", price: 15000, img: "images/b1.jpg" },
   { id: 2, name: "Нежность", desc: "Пионы, кустовые розы и эвкалипт", price: 28000, img: "images/b2.jpg" },
   { id: 3, name: "Пудровые розы", desc: "Пионовидные розы розовых и кремовых оттенков", price: 22000, img: "images/b3.jpg" },
-  { id: 4, name: "Красные розы", desc: "25 красных роз — классика любви", price: 25000, img: "images/b4.jpg" },
+  { id: 4, name: "Красные розы", desc: "Красные розы в нежной упаковке — классика любви", price: 25000, img: "images/roses-red.jpg" },
   { id: 5, name: "Осенний сад", desc: "Розы, гипериум и сезонная зелень", price: 32000, img: "images/b5.jpg" },
   { id: 6, name: "Солнечный день", desc: "Подсолнух, полевые цветы в крафте", price: 12000, img: "images/b6.jpg" },
   { id: 7, name: "Мишки в шапках", desc: "Два мягких мишки в новогодних шапках и свитерах", price: 10000, img: "images/bears-xmas.jpg" },
   { id: 8, name: "Мишка с сердечками", desc: "Большой мягкий мишка — отличный подарок", price: 10000, img: "images/bear-hearts.jpg" },
   { id: 9, name: "Розовые шары", desc: "Воздушные шары в нежных розовых оттенках", price: 5000, img: "images/balloons-pink.jpg" },
+  { id: 10, name: "Композиция в коробке", desc: "Лилии, розы и гвоздики в белой коробке с лентой", price: 20000, img: "images/box-lilies.jpg" },
 ];
 
 const formatPrice = (n) => n.toLocaleString("ru-RU").replace(/ /g, " ") + " ₸";
