@@ -5,6 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Аружан Flowers — доставка цветов</title>
   <meta name="description" content="Аружан Flowers — красивые букеты с доставкой. Закажите в WhatsApp.">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <meta property="og:title" content="Аружан Flowers — доставка цветов">
+  <meta property="og:description" content="Букеты, мишки и шары. Самовывоз и курьер.">
+  <meta property="og:image" content="images/og.jpg">
+  <meta property="og:type" content="website">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
@@ -13,10 +19,12 @@
 <body>
 
   <header class="header">
-    <a href="#home" class="logo">Аружан <span>Flowers</span></a>
+    <a href="#home" class="logo"><img class="logo-ava" src="images/ava.jpg" alt="">Аружан <span>Flowers</span></a>
     <nav class="nav">
       <a href="#home">Главная</a>
+      <a href="#video">Видео</a>
       <a href="#catalog">Каталог</a>
+      <a href="#delivery">Доставка</a>
     </nav>
     <button class="cart-btn" id="cartOpen" aria-label="Открыть корзину">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 7h12l-1 13H7L6 7z"/><path d="M9 7V5a3 3 0 0 1 6 0v2"/></svg>
@@ -38,10 +46,46 @@
       </div>
     </section>
 
+    <!-- Видео -->
+    <section class="promo" id="video">
+      <h2>Наша реклама</h2>
+      <div class="promo-video">
+        <video controls playsinline preload="metadata" poster="images/reklama-poster.jpg">
+          <source src="reklama.mp4" type="video/mp4">
+          Ваш браузер не поддерживает видео.
+        </video>
+      </div>
+    </section>
+
     <!-- Каталог -->
     <section class="catalog" id="catalog">
       <h2>Каталог букетов</h2>
       <div class="grid" id="products"></div>
+    </section>
+
+    <!-- Доставка -->
+    <section class="delivery" id="delivery">
+      <h2>Доставка</h2>
+      <div class="delivery-grid">
+        <button type="button" class="delivery-card" data-delivery="pickup" aria-pressed="false">
+          <h3>Самовывоз</h3>
+          <p>Заберите готовый заказ сами. Мы заранее соберём и упакуем его.</p>
+          <span class="delivery-mark">Выбрать</span>
+        </button>
+        <button type="button" class="delivery-card" data-delivery="courier" aria-pressed="false">
+          <h3>Курьер</h3>
+          <p>Курьер привезёт букет, мишек или шары по вашему адресу.</p>
+          <span class="delivery-mark">Выбрать</span>
+        </button>
+      </div>
+      <div class="delivery-confirm" id="deliveryConfirm" hidden>
+        <p class="delivery-confirm-text" id="deliveryConfirmText"></p>
+        <p class="delivery-confirm-sub" id="deliveryConfirmSub"></p>
+        <label class="delivery-address" id="deliveryAddressWrap" hidden>
+          <span>Укажите свой адрес доставки</span>
+          <input type="text" id="addressInput2" placeholder="Город, улица, дом, квартира">
+        </label>
+      </div>
     </section>
   </main>
 
@@ -59,6 +103,15 @@
     </div>
     <div class="cart-items" id="cartItems"></div>
     <div class="cart-foot">
+      <div class="cart-delivery">
+        <p class="cart-delivery-title">Как получить заказ?</p>
+        <div class="cart-delivery-btns">
+          <button type="button" data-delivery="pickup" aria-pressed="false">Самовывоз</button>
+          <button type="button" data-delivery="courier" aria-pressed="false">Курьер</button>
+        </div>
+        <input type="text" id="addressInput" class="cart-address" placeholder="Адрес доставки" hidden>
+        <p class="cart-delivery-hint" id="deliveryHint" hidden></p>
+      </div>
       <div class="cart-total">
         <span>Итого:</span>
         <strong id="cartTotal">0 ₸</strong>

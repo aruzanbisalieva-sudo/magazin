@@ -9,6 +9,9 @@ const products = [
   { id: 4, name: "Красные розы", desc: "25 красных роз — классика любви", price: 25000, img: "images/b4.jpg" },
   { id: 5, name: "Осенний сад", desc: "Розы, гипериум и сезонная зелень", price: 32000, img: "images/b5.jpg" },
   { id: 6, name: "Солнечный день", desc: "Подсолнух, полевые цветы в крафте", price: 12000, img: "images/b6.jpg" },
+  { id: 7, name: "Мишки в шапках", desc: "Два мягких мишки в новогодних шапках и свитерах", price: 10000, img: "images/bears-xmas.jpg" },
+  { id: 8, name: "Мишка с сердечками", desc: "Большой мягкий мишка — отличный подарок", price: 10000, img: "images/bear-hearts.jpg" },
+  { id: 9, name: "Розовые шары", desc: "Воздушные шары в нежных розовых оттенках", price: 5000, img: "images/balloons-pink.jpg" },
 ];
 
 const formatPrice = (n) => n.toLocaleString("ru-RU").replace(/ /g, " ") + " ₸";
@@ -112,14 +115,80 @@ document.getElementById("cartClose").addEventListener("click", closeCart);
 document.getElementById("overlay").addEventListener("click", closeCart);
 document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeCart(); });
 
+// Способ получения: самовывоз или курьер
+const DELIVERY_NAMES = { pickup: "Самовывоз", courier: "Курьер" };
+const DELIVERY_CONFIRM = { pickup: "Подтверждаем самовывоз ✓", courier: "Подтверждаем курьера ✓" };
+const DELIVERY_SUB = {
+  pickup: "Добавьте товары в корзину и нажмите «Заказать в WhatsApp».",
+  courier: "Добавьте товары в корзину и нажмите «Заказать в WhatsApp». Адрес мы передадим в заказе."
+};
+const addressInput2 = document.getElementById("addressInput2");
+const addressInput = document.getElementById("addressInput");
+const deliveryHint = document.getElementById("deliveryHint");
+let delivery = "";
+let address = "";
+try {
+  delivery = localStorage.getItem("delivery") || "";
+  address = localStorage.getItem("address") || "";
+} catch (e) {}
+if (!DELIVERY_NAMES[delivery]) delivery = "";
+addressInput.value = address;
+addressInput2.value = address;
+
+function renderDelivery() {
+  document.querySelectorAll("[data-delivery]").forEach((b) => {
+    const on = b.dataset.delivery === delivery;
+    b.classList.toggle("active", on);
+    b.setAttribute("aria-pressed", on ? "true" : "false");
+  });
+  document.querySelectorAll(".delivery-card").forEach((card) => {
+    const mark = card.querySelector(".delivery-mark");
+    mark.textContent = card.classList.contains("active") ? DELIVERY_CONFIRM[card.dataset.delivery] : "Выбрать";
+  });
+  const confirmBox = document.getElementById("deliveryConfirm");
+  confirmBox.hidden = !delivery;
+  if (delivery) {
+    document.getElementById("deliveryConfirmText").textContent = DELIVERY_CONFIRM[delivery];
+    document.getElementById("deliveryConfirmSub").textContent = DELIVERY_SUB[delivery];
+  }
+  document.getElementById("deliveryAddressWrap").hidden = delivery !== "courier";
+  addressInput.hidden = delivery !== "courier";
+  deliveryHint.hidden = true;
+}
+
+document.addEventListener("click", (e) => {
+  const b = e.target.closest("[data-delivery]");
+  if (!b) return;
+  delivery = b.dataset.delivery;
+  try { localStorage.setItem("delivery", delivery); } catch (err) {}
+  renderDelivery();
+});
+
+function onAddressInput(src, other) {
+  address = src.value;
+  other.value = address;
+  try { localStorage.setItem("address", address); } catch (e) {}
+  deliveryHint.hidden = true;
+}
+addressInput.addEventListener("input", () => onAddressInput(addressInput, addressInput2));
+addressInput2.addEventListener("input", () => onAddressInput(addressInput2, addressInput));
+
+function showHint(text) {
+  deliveryHint.textContent = text;
+  deliveryHint.hidden = false;
+}
+
 // Заказ в WhatsApp
 orderBtn.addEventListener("click", () => {
   const items = cartList();
   if (!items.length) return;
+  if (!delivery) { showHint("Выберите способ получения: самовывоз или курьер"); return; }
+  if (delivery === "courier" && !address.trim()) { showHint("Напишите адрес доставки"); addressInput.focus(); return; }
   const total = items.reduce((s, i) => s + i.qty * i.price, 0);
   const lines = items.map((i) => `• ${i.name} × ${i.qty} — ${formatPrice(i.price * i.qty)}`);
-  const text = `Здравствуйте! Хочу заказать в «Аружан Flowers»:\n\n${lines.join("\n")}\n\nИтого: ${formatPrice(total)}`;
+  const text = `Здравствуйте! Хочу заказать в «Аружан Flowers»:\n\n${lines.join("\n")}\n\nИтого: ${formatPrice(total)}\nПолучение: ${DELIVERY_NAMES[delivery]}${delivery === "courier" ? "\nАдрес: " + address.trim() : ""}`;
   window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`, "_blank");
 });
 
 renderCart();
+renderDelivery();
