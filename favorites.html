@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Избранное — Аружан Flowers</title>
+  <meta name="description" content="Товары, которые вам понравились.">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <meta property="og:title" content="Избранное — Аружан Flowers">
+  <meta property="og:description" content="Товары, которые вам понравились.">
+  <meta property="og:image" content="images/og.jpg">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="favorites">
+<!-- Шапка, подвал и корзина вставляются из script.js -->
+  <main>
+    <section class="catalog page-top">
+      <h1 class="page-title">Избранное ❤</h1>
+      <p class="section-sub fav-sub" id="favSub"></p>
+      <div class="fav-actions" id="favActions" hidden>
+        <button type="button" class="btn" id="favAllToCart">Всё в корзину</button>
+        <button type="button" class="btn btn-ghost" id="favClear">Очистить</button>
+      </div>
+      <div class="fav-empty" id="favEmpty" hidden>
+        <div class="fav-empty-heart">♡</div>
+        <p>Здесь пока пусто.<br>Нажимайте на сердечко на понравившихся товарах — они сохранятся здесь.</p>
+        <a href="catalog.html" class="btn">Перейти в каталог</a>
+      </div>
+      <div class="grid" id="favGrid"></div>
+      <p class="fav-login" id="favLoginHint" hidden><a href="login.html">Войдите</a> или <a href="login.html#register">зарегистрируйтесь</a>, чтобы избранное хранилось в вашем личном кабинете.</p>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>

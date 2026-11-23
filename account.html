@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Личный кабинет — Аружан Flowers</title>
+  <meta name="description" content="Личный кабинет: заказы, избранное и рекомендации.">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <meta property="og:title" content="Личный кабинет — Аружан Flowers">
+  <meta property="og:description" content="Личный кабинет: заказы, избранное и рекомендации.">
+  <meta property="og:image" content="images/og.jpg">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="account">
+<!-- Шапка, подвал и корзина вставляются из script.js -->
+  <main>
+    <section class="account page-top" id="account">
+      <div class="acc-top">
+        <div>
+          <h1 class="page-title acc-title" id="accHello">Личный кабинет</h1>
+          <p class="acc-since" id="accSince"></p>
+        </div>
+        <button type="button" class="btn btn-ghost" id="logoutBtn">Выйти</button>
+      </div>
+
+      <div class="acc-grid">
+        <form class="acc-card" id="profileForm">
+          <h2>Мои данные</h2>
+          <label>Имя<input type="text" name="name" autocomplete="name"></label>
+          <label>Почта<input type="email" name="email" disabled></label>
+          <label>Телефон<input type="tel" name="phone" autocomplete="tel" placeholder="+7 ..."></label>
+          <label>Адрес доставки<input type="text" name="address" autocomplete="street-address" placeholder="Город, улица, дом, квартира"></label>
+          <button type="submit" class="btn">Сохранить</button>
+        </form>
+        <div class="acc-card">
+          <h2>Мои заказы</h2>
+          <div id="accOrders"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="catalog">
+      <h2>Избранное</h2>
+      <div class="grid" id="accFavs"></div>
+    </section>
+
+    <section class="catalog">
+      <h2>Рекомендуем вам</h2>
+      <p class="section-sub" id="accRecsSub">Подобрано по вашим просмотрам, избранному и заказам</p>
+      <div class="grid grid-4" id="accRecs"></div>
+    </section>
+
+    <section class="account account-privacy">
+      <div class="acc-card">
+        <h2>Мои данные и согласие</h2>
+        <p class="consent-info" id="consentInfo"></p>
+        <label class="check switch-row">
+          <input type="checkbox" id="personalizeToggle">
+          <span>Учитывать мои просмотры, избранное и заказы для рекомендаций</span>
+        </label>
+        <p class="consent-links"><a href="privacy.html">Политика конфиденциальности</a></p>
+        <button type="button" class="danger-btn" id="deleteBtn">Отозвать согласие и удалить аккаунт</button>
+        <div class="delete-confirm" id="deleteConfirm" hidden>
+          <p>Удалить аккаунт? Имя, почта, телефон, адрес, история заказов и избранное будут стёрты. Это нельзя отменить.</p>
+          <div class="delete-btns">
+            <button type="button" class="danger-btn solid" id="deleteYes">Да, удалить</button>
+            <button type="button" class="btn btn-ghost" id="deleteCancel">Отмена</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>

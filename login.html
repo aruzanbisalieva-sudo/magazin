@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Вход — Аружан Flowers</title>
+  <meta name="description" content="Войдите или зарегистрируйтесь в Аружан Flowers.">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <meta property="og:title" content="Вход — Аружан Flowers">
+  <meta property="og:description" content="Войдите или зарегистрируйтесь в Аружан Flowers.">
+  <meta property="og:image" content="images/og.jpg">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="login">
+<!-- Шапка, подвал и корзина вставляются из script.js -->
+  <main>
+    <section class="auth page-top" id="auth">
+      <div class="auth-card">
+        <div class="auth-tabs" role="tablist">
+          <button type="button" class="active" data-tab="login" role="tab" aria-selected="true">Вход</button>
+          <button type="button" data-tab="register" role="tab" aria-selected="false">Регистрация</button>
+        </div>
+
+        <form id="loginForm" class="auth-form" novalidate>
+          <h1>С возвращением 🌸</h1>
+          <label>Почта<input type="email" name="email" autocomplete="email" required></label>
+          <label>Пароль<input type="password" name="pass" autocomplete="current-password" required></label>
+          <label class="check">
+            <input type="checkbox" name="consent" required>
+            <span>Я даю согласие на сбор и обработку моих персональных данных в соответствии с <a href="privacy.html" target="_blank">политикой конфиденциальности</a> <b class="req">*</b></span>
+          </label>
+          <p class="form-error" hidden></p>
+          <button type="submit" class="btn">Войти</button>
+        </form>
+
+        <form id="registerForm" class="auth-form" novalidate hidden>
+          <h1>Создайте аккаунт</h1>
+          <label>Имя<input type="text" name="name" autocomplete="name" required></label>
+          <label>Почта<input type="email" name="email" autocomplete="email" required></label>
+          <label>Телефон <small>(необязательно)</small><input type="tel" name="phone" autocomplete="tel" placeholder="+7 ..."></label>
+          <label>Пароль <small>(не меньше 6 символов)</small><input type="password" name="pass" autocomplete="new-password" required minlength="6"></label>
+          <label class="check">
+            <input type="checkbox" name="consent" required>
+            <span>Я даю согласие на сбор и обработку моих персональных данных (имя, почта, телефон, адрес, история заказов) в соответствии с <a href="privacy.html" target="_blank">политикой конфиденциальности</a> <b class="req">*</b></span>
+          </label>
+          <label class="check">
+            <input type="checkbox" name="personalize" checked>
+            <span>Разрешаю учитывать мои просмотры, избранное и заказы для персональных рекомендаций <small>(можно выключить в кабинете)</small></span>
+          </label>
+          <p class="form-error" hidden></p>
+          <button type="submit" class="btn">Зарегистрироваться</button>
+        </form>
+
+        <ul class="auth-perks">
+          <li>История заказов и «Повторить заказ» в один клик</li>
+          <li>Избранное ❤ всегда под рукой</li>
+          <li>Рекомендации, подобранные под ваш вкус</li>
+        </ul>
+        <p class="auth-note">Учебный проект: аккаунты хранятся только в этом браузере. <a href="privacy.html">Политика конфиденциальности</a></p>
+      </div>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
