@@ -15,6 +15,23 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <style>
+    .mishka { padding: 40px 5% 10px; text-align: center; }
+    .mishka h2 { font-family: "Cormorant Garamond", serif; font-weight: 600; font-size: clamp(2rem,4vw,2.8rem); color: var(--pink-600); margin-bottom: 18px; }
+    .mishka-wrap { max-width: 520px; margin: 0 auto; background: linear-gradient(160deg, var(--pink-100), var(--pink-50)); border-radius: var(--radius); box-shadow: var(--shadow); padding: 22px 16px 26px; }
+    .mishka-bubble { position: relative; background: #fff; color: var(--text); border-radius: 16px; padding: 14px 16px; font-size: 1rem; line-height: 1.45; min-height: 3.4em; box-shadow: 0 4px 14px rgba(201,85,124,.12); margin-bottom: 18px; text-align: left; }
+    .mishka-bubble::after { content: ""; position: absolute; left: 50%; bottom: -9px; width: 18px; height: 18px; background: #fff; transform: translateX(-50%) rotate(45deg); }
+    .mishka-bubble b { color: var(--pink-600); font-size: .75rem; letter-spacing: 2px; text-transform: uppercase; display: block; margin-bottom: 4px; }
+    .mishka-svg { width: min(470px, 100%); height: auto; display: block; margin: 6px auto 12px; overflow: visible; }
+    .mishka-btns { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 14px; }
+    .mishka-btn { font: inherit; font-size: .92rem; border: 1.5px solid var(--pink-200); background: #fff; color: var(--pink-600); border-radius: 999px; padding: 9px 14px; cursor: pointer; transition: transform .15s, background .15s; }
+    .mishka-btn:hover { background: var(--pink-100); transform: translateY(-2px); }
+    .mishka-btn.on { background: var(--pink-600); color: #fff; border-color: var(--pink-600); }
+    .mishka-cat { display: inline-block; }
+    .hero .hero-img.has-mishka { max-width: 540px; width: 100%; margin: 0 auto; }
+    .hero .mishka-wrap { margin: 0; }
+    @media (max-width: 640px) { .hero .hero-img.has-mishka { order: 1; max-width: 100%; } }
+  </style>
 </head>
 <body data-page="home">
 <!-- Шапка, подвал и корзина вставляются из script.js -->
@@ -30,8 +47,62 @@
           <a href="login.html#register" class="btn btn-outline" id="heroRegister">Регистрация</a>
         </div>
       </div>
-      <div class="hero-img">
-        <img src="images/hero-red.jpg" alt="Красный букет роз">
+      <div class="hero-img has-mishka">
+<div class="mishka-wrap" id="mishka">
+        <div class="mishka-bubble" id="mBubble" aria-live="polite">Привет! Я мишка из «Аружан Flowers». Нажми на меня или на кнопку «Говорить», и я расскажу про наши подарки!</div>
+        <svg class="mishka-svg" id="mSvg" viewBox="-60 20 420 330" role="img" aria-label="Мишка-помощник">
+          <ellipse cx="150" cy="338" rx="85" ry="9" fill="#c9557c" opacity=".15"/>
+          <g id="mBody">
+            <ellipse cx="112" cy="316" rx="30" ry="19" fill="#d9a066"/>
+            <ellipse cx="188" cy="316" rx="30" ry="19" fill="#d9a066"/>
+            <ellipse cx="112" cy="322" rx="14" ry="9" fill="#f3cfa0"/>
+            <ellipse cx="188" cy="322" rx="14" ry="9" fill="#f3cfa0"/>
+            <ellipse cx="150" cy="246" rx="70" ry="80" fill="#d9a066"/>
+            <ellipse cx="150" cy="258" rx="45" ry="55" fill="#f3d3a8"/>
+            <g id="mArmL"><g id="mBalloons"><path d="M70 288 C60 250 30 200 12 150 M70 288 C62 240 52 190 50 120 M70 288 C66 250 70 200 -28 112" stroke="#b87878" stroke-width="2.2" fill="none"/><g transform="translate(12 138) rotate(-12) scale(1.15)"><path d="M0,12 C-24,-4 -16,-26 0,-13 C16,-26 24,-4 0,12 Z" fill="#d6303f"/><ellipse cx="-7" cy="-9" rx="4" ry="2.4" fill="#fff" opacity=".45" transform="rotate(-30 -7 -9)"/><path d="M0 12 l-3 5 h6 z" fill="#d6303f"/></g><g transform="translate(52 104) rotate(6) scale(1.25)"><path d="M0,12 C-24,-4 -16,-26 0,-13 C16,-26 24,-4 0,12 Z" fill="#e0455a"/><ellipse cx="-7" cy="-9" rx="4" ry="2.4" fill="#fff" opacity=".45" transform="rotate(-30 -7 -9)"/><path d="M0 12 l-3 5 h6 z" fill="#e0455a"/></g><g transform="translate(-26 102) rotate(-18) scale(1.1)"><path d="M0,12 C-24,-4 -16,-26 0,-13 C16,-26 24,-4 0,12 Z" fill="#c1243a"/><ellipse cx="-7" cy="-9" rx="4" ry="2.4" fill="#fff" opacity=".45" transform="rotate(-30 -7 -9)"/><path d="M0 12 l-3 5 h6 z" fill="#c1243a"/></g></g><ellipse cx="80" cy="252" rx="20" ry="44" fill="#d9a066" transform="rotate(14 80 252)"/><circle cx="70" cy="290" r="12" fill="#f3cfa0"/></g>
+            <g id="mArmR"><ellipse cx="220" cy="252" rx="20" ry="44" fill="#d9a066" transform="rotate(-14 220 252)"/><g id="mBouquet"><path d="M232 292 L214 236 L262 236 Z" fill="#f6b8c8"/><path d="M232 292 L224 236 L246 236 Z" fill="#fbd3de"/><path d="M222 238 q-10 -14 -2 -22 M240 236 q0 -14 10 -20 M256 238 q10 -10 6 -20" stroke="#3f8a4a" stroke-width="4" fill="none" stroke-linecap="round"/><circle cx="222" cy="224" r="11" fill="#c1121f"/><path d="M215.95 224 q6.050000000000001 -8.8 12.100000000000001 0 M218.7 227.3 q3.3 -5.5 6.6 0" stroke="#7e0a14" stroke-width="1.6" fill="none"/><circle cx="244" cy="214" r="12" fill="#c1121f"/><path d="M237.4 214 q6.6000000000000005 -9.600000000000001 13.200000000000001 0 M240.4 217.6 q3.5999999999999996 -6.0 7.199999999999999 0" stroke="#7e0a14" stroke-width="1.6" fill="none"/><circle cx="262" cy="226" r="11" fill="#c1121f"/><path d="M255.95 226 q6.050000000000001 -8.8 12.100000000000001 0 M258.7 229.3 q3.3 -5.5 6.6 0" stroke="#7e0a14" stroke-width="1.6" fill="none"/><circle cx="233" cy="238" r="10" fill="#c1121f"/><path d="M227.5 238 q5.5 -8.0 11.0 0 M230.0 241.0 q3.0 -5.0 6.0 0" stroke="#7e0a14" stroke-width="1.6" fill="none"/><circle cx="252" cy="236" r="10" fill="#c1121f"/><path d="M246.5 236 q5.5 -8.0 11.0 0 M249.0 239.0 q3.0 -5.0 6.0 0" stroke="#7e0a14" stroke-width="1.6" fill="none"/><ellipse cx="214" cy="232" rx="7" ry="3.5" fill="#4a9a55" transform="rotate(-30 214 232)"/><ellipse cx="270" cy="236" rx="7" ry="3.5" fill="#4a9a55" transform="rotate(30 270 236)"/><path d="M226 262 q8 8 14 0" stroke="#e8638f" stroke-width="5" fill="none" stroke-linecap="round"/></g><circle cx="230" cy="290" r="12" fill="#f3cfa0"/></g>
+            <g id="mHead">
+              <circle cx="88" cy="62" r="27" fill="#d9a066"/><circle cx="88" cy="64" r="14" fill="#f0b8a0"/>
+              <circle cx="212" cy="62" r="27" fill="#d9a066"/><circle cx="212" cy="64" r="14" fill="#f0b8a0"/>
+              <circle cx="150" cy="118" r="76" fill="#d9a066"/>
+              <circle cx="106" cy="138" r="12" fill="#f08aa4" opacity=".45"/>
+              <circle cx="194" cy="138" r="12" fill="#f08aa4" opacity=".45"/>
+              <ellipse cx="150" cy="142" rx="36" ry="28" fill="#f6dcb6"/>
+              <ellipse id="mEyeL" cx="120" cy="104" rx="8" ry="10" fill="#3a2418"/>
+              <ellipse id="mEyeR" cx="180" cy="104" rx="8" ry="10" fill="#3a2418"/>
+              <circle id="mGlL" cx="123" cy="100" r="3" fill="#fff"/>
+              <circle id="mGlR" cx="183" cy="100" r="3" fill="#fff"/>
+              <path id="mBrowL" d="M108 88 q12 -8 24 0" stroke="#7a4a2a" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+              <path id="mBrowR" d="M168 88 q12 -8 24 0" stroke="#7a4a2a" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+              <ellipse cx="150" cy="128" rx="12" ry="8.5" fill="#4a2a1e"/>
+              <ellipse cx="146" cy="125" rx="4" ry="2" fill="#fff" opacity=".5"/>
+              <path d="M150 136 v7" stroke="#4a2a1e" stroke-width="3" stroke-linecap="round"/>
+              <path id="mSmile" d="M132 146 q18 14 36 0" stroke="#4a2a1e" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+              <g id="mMouth" style="display:none"><ellipse id="mMouthO" cx="150" cy="152" rx="14" ry="3" fill="#7a2a3a"/><ellipse id="mTongue" cx="150" cy="158" rx="8" ry="2" fill="#f08aa4"/></g>
+            </g>
+            <path d="M150 194 l-26 -13 v28 z M150 194 l26 -13 v28 z" fill="#e8638f"/>
+            <circle cx="150" cy="194" r="7" fill="#c9557c"/>
+          </g>
+        </svg>
+        <div class="mishka-btns">
+          <button type="button" class="mishka-btn on" id="mVoice">🔊 Говорить</button>
+          <button type="button" class="mishka-btn" data-act="wave">👋 Помахать</button>
+          <button type="button" class="mishka-btn" data-act="tickle">🤭 Пощекотать</button>
+          <button type="button" class="mishka-btn" data-act="joke">😄 Шутка</button>
+          <button type="button" class="mishka-btn" data-act="choose">🌹 Что подарить?</button>
+        </div>
+        <a href="catalog.html" class="btn mishka-cat">Открыть каталог</a>
+      </div>
+      </div>
+    </section>
+
+    <section class="promo">
+      <h2>Наша реклама</h2>
+      <div class="promo-video">
+        <video controls playsinline preload="metadata" poster="images/reklama-poster.jpg">
+          <source src="reklama.mp4" type="video/mp4">
+          Ваш браузер не поддерживает видео.
+        </video>
       </div>
     </section>
 
@@ -48,17 +119,126 @@
       <a href="catalog.html?cat=balloons" class="cat-tile"><img src="images/balloons-pink.jpg" alt=""><span>Шары</span></a>
     </section>
 
-    <section class="promo">
-      <h2>Наша реклама</h2>
-      <div class="promo-video">
-        <video controls playsinline preload="metadata" poster="images/reklama-poster.jpg">
-          <source src="reklama.mp4" type="video/mp4">
-          Ваш браузер не поддерживает видео.
-        </video>
-      </div>
-    </section>
   </main>
 
   <script src="script.js"></script>
+  <script>
+  (function () {
+    var $ = function (id) { return document.getElementById(id); };
+    var bubble = $('mBubble'), head = $('mHead'), body = $('mBody'), armL = $('mArmL'), armR = $('mArmR');
+    var eyeL = $('mEyeL'), eyeR = $('mEyeR'), glL = $('mGlL'), glR = $('mGlR'), mouth = $('mMouth'), mouthO = $('mMouthO'), tongue = $('mTongue'), smile = $('mSmile');
+    var browL = $('mBrowL'), browR = $('mBrowR'), voiceBtn = $('mVoice');
+    if (!bubble || !head) return;
+
+    var voiceOn = true, greeted = false, talkUntil = 0, mode = 'idle', modeUntil = 0, nextBlink = 1.5, blinkT = -1, squint = 0, analyser = null, data = null, audioEl = null, actx = null, speaking = false;
+    var GREET = 'Привет! Я мишка из магазина Аружан Flowers. Я очень люблю дарить тепло. У нас есть нежные букеты, красные розы и композиции в коробках. А ещё воздушные шары-сердечки и мои друзья, мягкие мишки. Мы доставим подарок курьером или ты можешь забрать его сам. Приходи, выбирай и дари радость тем, кого любишь!';
+    var JOKES = ['Знаешь, чем мишка отличается от букета? Букет можно подарить, а меня можно обнять!', 'Я бы подарил тебе розу, но у меня лапки. Зато у нас есть курьер!', 'Что мишка сказал цветку? Ты просто медовый!', 'Почему мишка любит шарики? Потому что с ними даже понедельник улетает!'];
+    var jokeI = 0;
+
+    function setText(t) { bubble.innerHTML = '<b>Мишка</b>' + t; }
+    function say(text, ms) {
+      setText(text);
+      var dur = ms || Math.max(1600, text.length * 62);
+      talkUntil = performance.now() + dur;
+      if (voiceOn && window.speechSynthesis) {
+        try {
+          speechSynthesis.cancel();
+          var u = new SpeechSynthesisUtterance(text.replace(/[^\p{L}\p{N}\s.,!?«»-]/gu, ''));
+          u.lang = 'ru-RU'; var vs = speechSynthesis.getVoices(); for (var k = 0; k < vs.length; k++) { if (/^ru/i.test(vs[k].lang)) { u.voice = vs[k]; break; } } u.rate = 1; u.pitch = 1.25;
+          u.onstart = function () { speaking = true; };
+          u.onend = function () { speaking = false; talkUntil = 0; };
+          speechSynthesis.speak(u);
+          talkUntil = performance.now() + 60000;
+        } catch (e) {}
+      }
+    }
+    function stopAudio() { if (audioEl) { audioEl.pause(); audioEl.currentTime = 0; } if (window.speechSynthesis) try { speechSynthesis.cancel(); } catch (e) {} speaking = false; }
+    function playGreeting() {
+      stopAudio();
+      setText(GREET);
+      mode = 'wave'; modeUntil = performance.now() + 1800;
+      try {
+        if (!audioEl) {
+          audioEl = new Audio('bear-voice.mp3');
+          audioEl.addEventListener('ended', function () { talkUntil = 0; });
+          audioEl.addEventListener('error', function () { talkUntil = 0; setText('Не нашёл файл голоса bear-voice.mp3. Его нужно загрузить на GitHub рядом с index.html. ' + GREET); });
+        }
+        audioEl.currentTime = 0;
+        var pr = audioEl.play();
+        talkUntil = performance.now() + 60000;
+        if (pr && pr.then) pr.then(function () {
+          greeted = true;
+          try {
+            if (!analyser) {
+              var AC = window.AudioContext || window.webkitAudioContext;
+              if (AC) { actx = new AC(); var src = actx.createMediaElementSource(audioEl); analyser = actx.createAnalyser(); analyser.fftSize = 512; src.connect(analyser); analyser.connect(actx.destination); data = new Uint8Array(analyser.frequencyBinCount); }
+            }
+            if (actx && actx.state === 'suspended') actx.resume();
+          } catch (e) {}
+        }).catch(function () { talkUntil = 0; setText('Нажми на меня или на кнопку «Говорить», и я заговорю!'); });
+      } catch (e) { say(GREET, 20000); }
+    }
+    function act(a) {
+      stopAudio();
+      var now = performance.now();
+      if (a === 'wave') { mode = 'wave'; modeUntil = now + 2600; say('Приветик! Рад тебя видеть! 👋'); }
+      else if (a === 'tickle') { mode = 'tickle'; modeUntil = now + 2800; say('Ха-ха-ха! Щекотно! Хватит, а то я весь растаю!'); }
+      else if (a === 'joke') { mode = 'laugh'; modeUntil = now + 1800; say(JOKES[jokeI++ % JOKES.length]); }
+      else if (a === 'choose') { mode = 'wave'; modeUntil = now + 1500; say('Хочешь удивить? Бери красные розы или композицию в коробке. А я люблю шарики-сердечки! Загляни в каталог.'); }
+    }
+    document.querySelectorAll('.mishka-btn[data-act]').forEach(function (b) { b.addEventListener('click', function () { act(b.getAttribute('data-act')); }); });
+    voiceBtn.addEventListener('click', function () { voiceOn = true; playGreeting(); });
+    $('mSvg').addEventListener('click', function () { voiceOn = true; playGreeting(); });
+    $('mSvg').style.cursor = 'pointer';
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (es) { if (es[0].isIntersecting && !greeted) { io.disconnect(); playGreeting(); } }, { threshold: 0.3 });
+      io.observe($('mishka'));
+    }
+
+    var last = performance.now(), t = 0, open = 0;
+    function frame(now) {
+      var dt = Math.min(0.05, (now - last) / 1000); last = now; t += dt;
+      var talking = now < talkUntil;
+      var target = 0;
+      if (talking) {
+        if (analyser && audioEl && !audioEl.paused) { analyser.getByteFrequencyData(data); var s = 0; for (var i = 2; i < 40; i++) s += data[i]; target = Math.min(1, (s / 38) / 110); }
+        else target = 0.35 + 0.65 * Math.abs(Math.sin(t * 11 + Math.sin(t * 3) * 2));
+      }
+      open += (target - open) * Math.min(1, dt * 18);
+      if (mode !== 'idle' && now > modeUntil) mode = 'idle';
+      // моргание
+      nextBlink -= dt; if (nextBlink <= 0 && blinkT < 0) { blinkT = 0; nextBlink = 2 + Math.random() * 3; }
+      var blink = 0; if (blinkT >= 0) { blinkT += dt; blink = Math.sin(Math.min(1, blinkT / 0.16) * Math.PI); if (blinkT > 0.16) blinkT = -1; }
+      var sq = (mode === 'tickle' || mode === 'laugh') ? 0.65 : 0;
+      var eyeScale = Math.max(0.08, 1 - Math.max(blink, sq));
+      eyeL.setAttribute('ry', 10 * eyeScale); eyeR.setAttribute('ry', 10 * eyeScale);
+      glL.setAttribute('r', 3 * eyeScale); glR.setAttribute('r', 3 * eyeScale);
+      // рот
+      var mo = open; if (mode === 'tickle' || mode === 'laugh') mo = Math.max(mo, 0.55 + 0.35 * Math.sin(t * 18));
+      if (mo > 0.06) { mouth.style.display = ''; smile.style.display = 'none'; mouthO.setAttribute('ry', 3 + 15 * mo); mouthO.setAttribute('cy', 150 + 8 * mo); tongue.setAttribute('cy', 150 + 14 * mo); tongue.setAttribute('ry', 1 + 6 * mo); }
+      else { mouth.style.display = 'none'; smile.style.display = ''; }
+      // брови
+      var up = (mode === 'wave') ? -4 : 0;
+      browL.setAttribute('transform', 'translate(0 ' + (up + 1.5 * open) + ')'); browR.setAttribute('transform', 'translate(0 ' + (up + 1.5 * open) + ')');
+      // тело и голова
+      var breathe = Math.sin(t * 2) * 1.2;
+      var shake = mode === 'tickle' ? Math.sin(t * 40) * 4 : 0;
+      var tilt = mode === 'laugh' ? Math.sin(t * 14) * 4 : Math.sin(t * 1.3) * 1.2;
+      body.setAttribute('transform', 'translate(' + shake + ' ' + (breathe * 0.5) + ')');
+      head.setAttribute('transform', 'translate(0 ' + (breathe + (talking ? -open * 2.5 : 0)) + ') rotate(' + tilt + ' 150 190)');
+      // лапы
+      var aL = 0, aR = 0;
+      if (mode === 'wave') { aL = 140 + Math.sin(t * 14) * 14; aR = -12 + Math.sin(t * 9) * 5; }
+      else if (mode === 'tickle') { aL = Math.sin(t * 30) * 14; aR = -Math.sin(t * 30) * 14; }
+      else if (mode === 'laugh') { aL = Math.sin(t * 14) * 8; aR = -Math.sin(t * 14) * 8; }
+      else { aL = Math.sin(t * 2) * 2; aR = -Math.sin(t * 2) * 2; }
+      armL.setAttribute('transform', 'rotate(' + aL + ' 92 214)');
+      armR.setAttribute('transform', 'rotate(' + aR + ' 208 214)');
+      requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  })();
+  </script>
+
 </body>
 </html>
